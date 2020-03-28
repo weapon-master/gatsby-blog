@@ -11,15 +11,9 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: install
-      # Build to ./dist or other directory
-      # ...
-      - uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: build
-
+      - uses: actions/setup-node@v1
+      - run: npm install
+      - run: npm run build
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.0
         with:
